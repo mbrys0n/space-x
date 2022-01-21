@@ -1,39 +1,18 @@
 import React from 'react';
-import styled from 'styled-components/macro';
-import { colours } from 'constants/colours';
+import { Container, Paper } from '@mui/material';
 
 interface Props {
   heading: string;
   children?: React.ReactElement | React.ReactElement[];
 }
 
-const Container = styled.section`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  background-color: white;
-  padding: 20px;
-
-  & h1 {
-    margin: 0;
-    color: ${colours.navy};
-  }
-`;
-
-const Content = styled.article`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  background-color: white;
-  overflow-y: auto;
-  align-items: center;
-`;
-
-const Page = ({ heading, children }: Props) => {
+const Page = ({ children, heading }: Props): JSX.Element => {
   return (
-    <Container>
-      <h1>{heading}</h1>
-      <Content>{children}</Content>
+    <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+        <h3>{heading}</h3>
+        {children}
+      </Paper>
     </Container>
   );
 };
