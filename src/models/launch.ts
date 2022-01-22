@@ -1,4 +1,4 @@
-export interface LaunchSummary {
+export interface LaunchSummaryDto {
   name: string;
   date_unix: number;
   launchpad: string;

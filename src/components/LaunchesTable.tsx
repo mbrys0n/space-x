@@ -6,12 +6,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { LaunchSummary } from '../models/launch';
+import { LaunchSummaryDto } from '../models/launch';
 
 // Adapted from https://mui.com/components/tables/
 
 interface LaunchesTableProps {
-  rows?: LaunchSummary[];
+  rows?: LaunchSummaryDto[];
 }
 
 export const LaunchesTable = ({ rows }: LaunchesTableProps): JSX.Element => {
