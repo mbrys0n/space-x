@@ -1,10 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { createMemoryHistory, MemoryHistory } from 'history';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-export function renderWithRouter(ui: JSX.Element, initialRoutes: string[]) {
+export function renderWithRouter(
+  ui: JSX.Element,
+  initialRoutes: string[],
+): {
+  history: MemoryHistory;
+} {
   const history = createMemoryHistory({ initialEntries: initialRoutes });
 
   return {
@@ -13,7 +18,12 @@ export function renderWithRouter(ui: JSX.Element, initialRoutes: string[]) {
   };
 }
 
-export function renderWithReactQueryRouter(ui: JSX.Element, initialRoutes: string[]) {
+export function renderWithReactQueryRouter(
+  ui: JSX.Element,
+  initialRoutes: string[],
+): {
+  history: MemoryHistory;
+} {
   const history = createMemoryHistory({ initialEntries: initialRoutes });
   const queryClient = new QueryClient({
     defaultOptions: {
