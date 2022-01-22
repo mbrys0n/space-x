@@ -27,7 +27,7 @@ export const LaunchesTable = ({ rows, includeFavouriteColumn = true }: LaunchesT
       setFavourites(favourites);
     }
   };
-  return (
+  return rows && rows?.length > 0 ? (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -39,26 +39,24 @@ export const LaunchesTable = ({ rows, includeFavouriteColumn = true }: LaunchesT
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows ? (
-            rows.map(({ name, date_utc, launchpad, id }) => (
-              <TableRow key={name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">
-                  {name}
+          {rows.map(({ name, date_utc, launchpad, id }) => (
+            <TableRow key={name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableCell component="th" scope="row">
+                {name}
+              </TableCell>
+              <TableCell align="right">{date_utc}</TableCell>
+              <TableCell align="right">{launchpad}</TableCell>
+              {includeFavouriteColumn && (
+                <TableCell align="right">
+                  <FavouriteButton onClick={toggleFavourite(id)} isFavourite={favourites.has(id)} />
                 </TableCell>
-                <TableCell align="right">{date_utc}</TableCell>
-                <TableCell align="right">{launchpad}</TableCell>
-                {includeFavouriteColumn && (
-                  <TableCell align="right">
-                    <FavouriteButton onClick={toggleFavourite(id)} isFavourite={favourites.has(id)} />
-                  </TableCell>
-                )}
-              </TableRow>
-            ))
-          ) : (
-            <div>No data</div>
-          )}
+              )}
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
+  ) : (
+    <div>No Launches</div>
   );
 };

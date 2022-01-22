@@ -26,7 +26,6 @@ const ResponsiveAppBar = ({ history }: RouteComponentProps): JSX.Element => {
   };
 
   const handleMenuItemClick = (url: string) => () => {
-    console.log('clicked', url);
     history.push(url);
     handleCloseNavMenu();
   };

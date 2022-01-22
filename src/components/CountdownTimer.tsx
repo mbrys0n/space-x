@@ -11,8 +11,11 @@ const CountdownTimer = ({ parsedDT }: TimerProps): JSX.Element => {
   const [{ days, hours, minutes, seconds }, setTimeDelta] = useState(calculateTimeDeltaFromNow(parsedDT));
 
   useEffect(() => {
-    setInterval(() => setTimeDelta(calculateTimeDeltaFromNow(parsedDT)), 1000);
-  });
+    const timerId = setInterval(() => {
+      setTimeDelta(calculateTimeDeltaFromNow(parsedDT));
+    }, 1000);
+    return () => clearInterval(timerId);
+  }, []);
   return (
     <h1>
       {days} days : {hours} hours : {minutes} minutes : {Math.floor(seconds)} seconds
