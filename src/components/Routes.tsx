@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { Switch, Route } from 'react-router-dom';
 import { CountdownPage, LaunchesPage } from 'pages';
+import { FavouritesPage } from '../pages/FavouritesPage';
 
 const Container = styled.main`
   grid-area: content;
@@ -21,6 +22,9 @@ const Routes = (): JSX.Element => {
         </Route>
         <Route path="/countdown">
           <CountdownPage />
+        </Route>
+        <Route path="/favourites">
+          <FavouritesPage />
         </Route>
       </Switch>
     </Container>
