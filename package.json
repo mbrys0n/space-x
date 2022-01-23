@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "Space-x tech challenge",
   "license": "MIT",
+  "homepage": "https://mbrys0n.github.io/space-x/",
   "scripts": {
     "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "build": "react-scripts build",
