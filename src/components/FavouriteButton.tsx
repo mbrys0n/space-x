@@ -4,10 +4,11 @@ interface FavouriteButtonProps {
   onClick: () => void;
   isFavourite: boolean;
 }
+const testId = 'favourite-button';
 export const FavouriteButton = ({ onClick, isFavourite }: FavouriteButtonProps): JSX.Element => {
   return isFavourite ? (
-    <StarIcon onClick={onClick} style={{ cursor: 'pointer' }} />
+    <StarIcon onClick={onClick} style={{ cursor: 'pointer' }} data-testid={testId} />
   ) : (
-    <StarOutlineIcon style={{ cursor: 'pointer' }} onClick={onClick} />
+    <StarOutlineIcon style={{ cursor: 'pointer' }} onClick={onClick} data-testid={testId} />
   );
 };
